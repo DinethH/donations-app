@@ -1,0 +1,6 @@
+{
+  "name": "donations-app",
+  "short_name": "donations-app",
+  "start_url": "/",
+  "display": "standalone"
+}

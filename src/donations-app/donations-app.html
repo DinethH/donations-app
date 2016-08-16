@@ -1,0 +1,30 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="landing-page.html">
+<dom-module id="donations-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <iron-pages selected="0">
+      <section>
+        <landing-page></landing-page>
+      </section>
+      <section>page 2</section>
+      <section>page 3</section>
+    </iron-pages>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'donations-app',
+
+      properties: {
+      },
+
+    });
+  </script>
+</dom-module>
