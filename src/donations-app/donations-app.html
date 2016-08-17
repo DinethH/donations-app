@@ -1,6 +1,11 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+
 <link rel="import" href="landing-page.html">
+<link rel="import" href="email-page.html">
+<link rel="import" href="cardTemplate-page.html">
 <dom-module id="donations-app">
   <template>
     <style>
@@ -12,12 +17,28 @@
         margin: 0 auto;
       }
     </style>
-    <iron-pages selected="0">
+    
+    <app-location route="{{route}}"></app-location>
+    
+    <app-route
+        route="{{route}}"
+        pattern="/:selected"
+        data="{{routeData}}"
+        tail="{{subroute}}">
+    </app-route>
+    
+
+    <iron-pages selected="{{selected}}">
       <section>
-        <landing-page></landing-page>
+        <landing-page page="{{selected}}"></landing-page>
       </section>
-      <section>page 2</section>
-      <section>page 3</section>
+      <section>
+        <email-page page="{{selected}}" item="{{item}}"></email-page>
+      </section>
+      <section>
+        <cardTemplate-page page="{{selected}}" item="{{item}}"></cardTemplate-page>
+      </section>
+      <section>page4</section>
     </iron-pages>
   </template>
 
@@ -27,7 +48,27 @@
       is: 'donations-app',
 
       properties: {
+        page: {
+          notify: true
+        },
+        selected: {
+          value: "0",
+          reflectToAttribute: true,
+          notify: true,
+          observer: '_selectedChanged'
+        },
+        route: {
+          observer: '_routeChanged',
+          notify: true
+        }
       },
+      _routeChanged: function () {
+        this.selected = this.route.path.split('/')[1];
+      },
+      _selectedChanged: function () {
+        //this.route.path = this.selected;
+      }
+      
 
     });
   </script>

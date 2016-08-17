@@ -1,0 +1,37 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+
+<dom-module id="email-page">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+     
+    </style>
+    <paper-input label="Name" value="{{item.name}}"></paper-input>
+    <paper-input label="Email" value="{{item.email}}"></paper-input>
+    <paper-input label="Message" value="{{item.message}}"></paper-input>
+    <paper-button raised on-click="cardTemplate">raised</paper-button>
+  </template>
+  <script>
+    Polymer({
+      is: 'email-page',
+      properties:{
+          page:{
+              type: Number,
+              notify: true
+          },
+          item: {
+              type: Object,
+              value: Object
+          }
+      },
+      cardTemplate: function(){
+          console.log(this.item);
+        this.page = "2";
+      }
+    });
+  </script>
+</dom-module>

@@ -8,27 +8,56 @@
       }
       .icon {
         width: 80px;
+        
+      }
+      .label {
+        text-align: center;
+        padding: 15px;
+        text-transform: uppercase;
       }
       .container {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         flex-wrap: wrap;
       }
       .segment {
-
+        box-shadow: 1px 1px 5px #ccc;
+        width: 120px;
+        height: 120px;
+        margin: 10px;
+        border-radius: 5px;
+        text-align: center;
+        padding: 10px;
       }
     </style>
 
     <div class="container">
-      <div class="segment"><img class="icon" src="../../img/house.png" alt=""></div>
-      <div class="segment"><img class="icon" src="../../img/house.png" alt=""></div>
-      <div class="segment"><img class="icon" src="../../img/house.png" alt=""></div>
-      <div class="segment"><img class="icon" src="../../img/house.png" alt=""></div>
+      <div class="segment"><img class="icon" src="../../img/house.png" alt="">
+        <div class="label">Post</div>
+      </div>
+      <div class="segment" on-click="email"><img class="icon" src="../../img/house.png" alt="">
+        <div class="label">Email</div>
+      </div>
+      <div class="segment"><img class="icon" src="../../img/house.png" alt="">
+        <div class="label">POST</div>
+      </div>
+      <div class="segment"><img class="icon" src="../../img/house.png" alt="">
+        <div class="label">POST</div>
+      </div>
     </div>
   </template>
   <script>
     Polymer({
-      is: 'landing-page'
+      is: 'landing-page',
+      properties: {
+        page: {
+          type: Number,
+          notify: true
+        }
+      },
+      email: function () {
+        this.page = "1";
+      }
     });
   </script>
 </dom-module>
