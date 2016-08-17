@@ -11,13 +11,19 @@
         display: block;
       }
      
+     .container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
     </style>
-    
-      <iron-selector selected="0">
-    <div>Item 1</div>
-    <div>Item 2</div>
-    <div>Item 3</div>
-  </iron-selector>
+   
+      <iron-selector selected="0" class="container">
+        <template is="dom-repeat" items="{{images}}">
+          <div><img class="cardImage" src="../../img/{{item.img}}" alt=""></div>
+        </template>
+       
+      </iron-selector>
     
     <paper-button raised on-click="paymentInfo">raised</paper-button>
   </template>
@@ -33,6 +39,13 @@
               type: Object,
               value: Object
           }
+      },
+      ready: function () {
+        this.images = [
+            {img: 'happybirthday_w.jpg'},
+            {img: 'happyeaster_w.jpg'},
+            {img: 'merrychristmas_w.jpg'}
+          ];
       },
       paymentInfo: function(){
           console.log(this.item);
